@@ -11,14 +11,17 @@ export function FunctionalScoreBoard(props: TFunctionScoreBoardProps) {
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>
-      <div id="choices-left">
-        {[...fishLeft].map((answer) => (
-          <div key={answer} className="choice">
-            {answer}
-          </div>
-        ))}
-      </div>
       <div>Correct ✅: {correctCount}</div>
+      <div id="choices-left">
+        Choices Left:
+        {[...fishLeft]
+          .sort(() => Math.random() - 0.5)
+          .map((answer) => (
+            <div key={answer} className="choice">
+              {answer}
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
