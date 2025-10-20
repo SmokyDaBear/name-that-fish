@@ -8,6 +8,7 @@ type TFunctionScoreBoardProps = {
 
 export function FunctionalScoreBoard(props: TFunctionScoreBoardProps) {
   const { correctCount, incorrectCount, fishLeft } = props;
+
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>

@@ -5,12 +5,14 @@ import { useState } from "react";
 import { fishNames, initialFishes } from "../../constants/data";
 
 export function FunctionalApp() {
+  //State Variables:
   const [correctAnswers, setCorrect] = useState(0);
   const [incorrectAnswers, setIncorrect] = useState(0);
+  const [fishLeft, setFishLeft] = useState(new Set(fishNames));
+
+  //Derived Variables:
   const fishIndex = correctAnswers + incorrectAnswers;
   const isDone = fishIndex === initialFishes.length;
-  const curFish = initialFishes[fishIndex];
-  const [fishLeft, setFishLeft] = useState(new Set(fishNames));
 
   const makeGuess = (isCorrect: boolean, guess: string) => {
     if (isCorrect) {
@@ -37,7 +39,10 @@ export function FunctionalApp() {
             correctCount={correctAnswers}
             incorrectCount={incorrectAnswers}
           />
-          <FunctionalGameBoard curFish={curFish} submitFunc={makeGuess} />
+          <FunctionalGameBoard
+            curFish={initialFishes[fishIndex]}
+            submitFunc={makeGuess}
+          />
         </>
       )}
 
