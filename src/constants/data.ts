@@ -17,4 +17,8 @@ export const initialFishes = [
     name: "shark",
     url: Images.shark,
   },
+  {
+    name: "red snapper",
+    url: Images.redSnapper,
+  },
 ];
