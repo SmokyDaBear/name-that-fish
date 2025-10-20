@@ -22,3 +22,7 @@ export const initialFishes = [
     url: Images.redSnapper,
   },
 ];
+
+export const fishNames: Set<string> = new Set(
+  ...[initialFishes.map((fish) => fish.name)]
+);
