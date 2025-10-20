@@ -1,16 +1,18 @@
 import "./styles/score-board.css";
-//  Where the score is presented
 
-const incorrectCount = 0;
-const correctCount = 0;
-const answersLeft = ["trout", "salmon", "tuna", "shark"];
+type TFunctionScoreBoardProps = {
+  correctCount: number;
+  incorrectCount: number;
+  fishLeft: Set<string>;
+};
 
-export function FunctionalScoreBoard() {
+export function FunctionalScoreBoard(props: TFunctionScoreBoardProps) {
+  const { correctCount, incorrectCount, fishLeft } = props;
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>
       <div id="choices-left">
-        {answersLeft.map((answer) => (
+        {[...fishLeft].map((answer) => (
           <div key={answer} className="choice">
             {answer}
           </div>

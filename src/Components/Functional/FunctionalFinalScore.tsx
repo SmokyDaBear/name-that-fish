@@ -1,13 +1,21 @@
 import "./styles/final-score.css";
-const correctCount = 0;
-const totalCount = 0;
-export const FunctionalFinalScore = () => (
-  <div id="final-score">
-    <h1>Your Final Score Was</h1>
-    <div id="score">
-      <p>{correctCount}</p>
-      <hr />
-      <p>{totalCount}</p>
+
+type TFunctionFinalScoreProps = {
+  correctCount: number;
+  incorrectCount: number;
+};
+
+export function FunctionalFinalScore(props: TFunctionFinalScoreProps) {
+  const { correctCount, incorrectCount } = props;
+  const totalCount = correctCount + incorrectCount;
+  return (
+    <div id="final-score">
+      <h1>Your Final Score Was</h1>
+      <div id="score">
+        <p>{correctCount}</p>
+        <hr />
+        <p>{totalCount}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+}
