@@ -2,7 +2,7 @@ import { FunctionalGameBoard } from "./FunctionalGameBoard";
 import { FunctionalScoreBoard } from "./FunctionalScoreBoard";
 import { FunctionalFinalScore } from "./FunctionalFinalScore";
 import { useState } from "react";
-import { initialFishes } from "../../constants/data";
+import { fishNames, initialFishes } from "../../constants/data";
 
 export function FunctionalApp() {
   const [correctAnswers, setCorrect] = useState(0);
@@ -10,9 +10,7 @@ export function FunctionalApp() {
   const fishIndex = correctAnswers + incorrectAnswers;
   const isDone = fishIndex === initialFishes.length;
   const curFish = initialFishes[fishIndex];
-  const [fishLeft, setFishLeft] = useState(
-    new Set(initialFishes.map((fish) => fish.name))
-  );
+  const [fishLeft, setFishLeft] = useState(new Set(fishNames));
 
   const makeGuess = (isCorrect: boolean, guess: string) => {
     if (isCorrect) {
@@ -22,6 +20,12 @@ export function FunctionalApp() {
     } else {
       setIncorrect(incorrectAnswers + 1);
     }
+  };
+
+  const resetGame = () => {
+    setCorrect(0);
+    setIncorrect(0);
+    setFishLeft(new Set(fishNames));
   };
 
   return (
@@ -41,6 +45,7 @@ export function FunctionalApp() {
         <FunctionalFinalScore
           correctCount={correctAnswers}
           incorrectCount={incorrectAnswers}
+          resetGame={resetGame}
         />
       )}
     </>

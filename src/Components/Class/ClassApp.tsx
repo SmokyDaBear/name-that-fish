@@ -2,13 +2,21 @@ import { Component } from "react";
 import { ClassScoreBoard } from "./ClassScoreBoard";
 import { ClassGameBoard } from "./ClassGameBoard";
 import { ClassFinalScore } from "./ClassFinalScore";
-import { initialFishes } from "../../constants/data";
+import { fishNames, initialFishes } from "../../constants/data";
 
 export class ClassApp extends Component {
   state = {
     incorrectCount: 0,
     correctCount: 0,
-    guesses: new Set<string>(initialFishes.map((fish) => fish.name)),
+    guesses: new Set(fishNames),
+  };
+
+  resetGame = () => {
+    this.setState({
+      incorrectCount: 0,
+      correctCount: 0,
+      guesses: new Set(fishNames),
+    });
   };
 
   updateCount = (val: boolean, guess: string) => {
@@ -52,6 +60,7 @@ export class ClassApp extends Component {
           <ClassFinalScore
             correctCount={this.state.correctCount}
             incorrectCount={this.state.incorrectCount}
+            resetGame={this.resetGame}
           />
         )}
       </>
