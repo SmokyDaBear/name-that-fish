@@ -11,6 +11,10 @@
   align-items: center;
   padding-top: 20px;
 }
+.left,
+.right {
+  min-width: 515px;
+}
 .left {
   width: 45%;
   text-align: center;
@@ -21,6 +25,21 @@
 }
 
 .split {
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 1123px) {
+  .split {
+    justify-content: center;
+  }
+}
+@media (max-width: 560px) {
+  .left,
+  .right {
+    min-width: 90%;
+  }
 }
